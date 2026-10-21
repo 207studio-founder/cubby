@@ -1,0 +1,5 @@
+# One bot name per line: lowercase letters, digits and dashes. Order sets the display number.
+# Copy to bots.conf and edit, or pass BOTS="a b c" to the setup script.
+builder-a
+builder-b
+reviewer
