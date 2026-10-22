@@ -37,6 +37,12 @@ Shared read-only SDK directory: `/srv/shared/sdk` (group `buildbots`).
    `xtool sdk install /srv/shared/sdk/Xcode.app --slim`.
    For signing, use `xtool auth` with an App Store Connect API key. No Apple ID password is stored.
 
+## Apple 개발자 팀 (2026-10-22~)
+iOS·macOS 빌드 서명, TestFlight, App Store 출시는 모두 조직 **207 Studio (Team ID `H32W23F7UW`)**로 한다.
+- Xcode/xcodebuild: `DEVELOPMENT_TEAM = H32W23F7UW`, `CODE_SIGN_STYLE = Automatic`.
+- xtool: `xtool auth`에 쓰는 App Store Connect API 키는 207 Studio 팀에서 발급한 것만 쓴다. 키 파일·Issuer ID 값은 저장소에 넣지 않는다.
+- TestFlight 업로드와 App Store 제출은 Mac에서 207 Studio 팀으로 한다. 예전 개인 팀으로 서명한 빌드는 올리지 않는다.
+
 ## Usage
 ```
 wsl -d Ubuntu-24.04 -u bot-NAME
