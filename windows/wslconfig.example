@@ -1,5 +1,6 @@
 # Copy to %UserProfile%\.wslconfig, then run `wsl --shutdown`. Size to your machine.
 [wsl2]
+guiApplications=false
 memory=24GB
 processors=8
 swap=8GB

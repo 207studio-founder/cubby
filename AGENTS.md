@@ -1,10 +1,12 @@
 # AGENTS.md
 
-Guide for coding agents using or changing Cubby.
+Guide for coding agents using or changing Kiwi Tray (Tiny Rooms for Agents, Yours).
 
-## Using a Cubby host
-- Enter only your own cubby: `wsl -d Ubuntu-24.04 -u bot-<you>`. Work under `$WORK`, cache under `$XDG_CACHE_HOME`.
+## Using a Kiwi Tray host
+- Enter only your own room: `wsl -d Ubuntu-24.04 -u bot-<you>`. Work under `$WORK`, cache under `$XDG_CACHE_HOME`.
 - Use your own `DISPLAY` and `PULSE_SINK` (already set in `~/.bot-env`). Never point at another bot's display.
+- Never run Windows executables.
+- Never touch `/mnt/wslg`.
 - Do not use sudo, and do not read other bots' homes or `/srv/builds/<other>`.
 - `/srv/shared/sdk` is shared and read-only for bots. Ask the host owner to change it.
 - The RDP session belongs to the human owner. Do not log in to it.
