@@ -40,7 +40,7 @@ if ! tray_wsl_conf | sudo cmp -s - /etc/wsl.conf; then
 fi
 
 sudo apt-get update -qq
-sudo apt-get install -y -qq xvfb xauth pulseaudio pulseaudio-utils libfuse2t64 curl git unzip >/dev/null
+sudo apt-get install -y -qq xvfb xauth pulseaudio pulseaudio-utils imagemagick libfuse2t64 curl git unzip >/dev/null
 if ! [ -x /usr/local/bin/xtool ] || ! /usr/local/bin/xtool --version 2>/dev/null | grep -q "$XTOOL_VER"; then
   curl -fsSL -o /tmp/xtool.AppImage "https://github.com/xtool-org/xtool/releases/download/${XTOOL_VER}/xtool-x86_64.AppImage"
   sudo install -m755 /tmp/xtool.AppImage /usr/local/bin/xtool

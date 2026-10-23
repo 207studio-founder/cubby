@@ -24,6 +24,12 @@ ok "env Xauthority"      'grep -Fqx "export XAUTHORITY=/srv/builds/alpha/cache/X
 ok "env runtime dir"     'grep -Fqx "export XDG_RUNTIME_DIR=/srv/builds/alpha/cache/run" <<<"$env_out"'
 ok "env PulseAudio server" 'grep -Fqx "export PULSE_SERVER=unix:/srv/builds/alpha/cache/run/pulse/native" <<<"$env_out"'
 ok "env disables Wayland" 'grep -Fqx "unset WAYLAND_DISPLAY" <<<"$env_out"'
+snap=$(tray_snapshot_cmd alpha 12 /srv/builds/alpha/work/s.png)
+ok "snapshot own display" 'grep -Fqx "DISPLAY=:12 XAUTHORITY=/srv/builds/alpha/cache/Xauthority import -window root /srv/builds/alpha/work/s.png" <<<"$snap"'
+ok "snapshot rejects other room" '! tray_snapshot_cmd alpha 12 /srv/builds/beta/s.png'
+ok "snapshot rejects traversal" '! tray_snapshot_cmd alpha 12 /srv/builds/alpha/../beta/s.png'
+ok "snapshot rejects injection" '! tray_snapshot_cmd alpha 12 "/srv/builds/alpha/a;rm.png"'
+ok "snapshot rejects bad display" '! tray_snapshot_cmd alpha x1 /srv/builds/alpha/s.png'
 ok "display unit user"   'tray_display_unit alpha 12 | grep -qx "User=bot-alpha"'
 ok "xvfb no tcp"         'tray_display_unit alpha 12 | grep -q "Xvfb :12 .*-nolisten tcp"'
 ok "xvfb Xauthority"     'tray_display_unit alpha 12 | grep -q "Xvfb :12 .*-auth /srv/builds/alpha/cache/Xauthority$"'

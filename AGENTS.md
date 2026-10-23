@@ -6,6 +6,7 @@ Guide for coding agents using or changing Kiwi Tray (Tiny Rooms for Agents, Your
 - Enter only your own room: `wsl -d Ubuntu-24.04 -u bot-<you>`. Work under `$WORK`, cache under `$XDG_CACHE_HOME`.
 - Use your own `DISPLAY` and `PULSE_SINK` (already set in `~/.bot-env`). Never point at another bot's display.
 - Never run Windows executables.
+- Screenshot only your own display: run the command printed by `tray_snapshot_cmd <you> <display> /srv/builds/<you>/<file>.png`. Never capture the Windows desktop or another bot's display.
 - Never touch `/mnt/wslg`.
 - Do not use sudo, and do not read other bots' homes or `/srv/builds/<other>`.
 - `/srv/shared/sdk` is shared and read-only for bots. Ask the host owner to change it.
