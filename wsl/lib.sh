@@ -67,6 +67,14 @@ appendWindowsPath=false
 CONF
 }
 
+tray_snapshot_cmd() { # bot display_number out.png -> prints a screen-free capture command for that bot's own Xvfb
+  local b="$1" n="$2" out="$3"
+  tray_validate_name "$b" || return 1
+  [[ "$n" =~ ^[0-9]{1,3}$ ]] || return 1
+  [[ "$out" =~ ^/srv/builds/$b/[A-Za-z0-9._/-]+\.png$ && "$out" != *..* ]] || return 1
+  printf 'DISPLAY=:%s XAUTHORITY=/srv/builds/%s/cache/Xauthority import -window root %s\n' "$n" "$b" "$out"
+}
+
 cubby_validate_name() { tray_validate_name "$@"; }
 cubby_read_bots() { tray_read_bots "$@"; }
 cubby_env() { tray_env "$@"; }
